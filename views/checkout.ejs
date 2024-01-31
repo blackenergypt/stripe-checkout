@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stripe Checkout</title>
+</head>
+<body>
+    <h1>Checkout do Produto</h1>
+    <div>
+        <h2><%= product.name %></h2>
+        <img src="<%= product.imageUrl %>" alt="<%= product.name %>" style="width: 200px;">
+        <p>Preço: $<%= (product.price / 100).toFixed(2) %></p>
+        <p><%= product.description %></p>
+
+        <form action="/create-checkout-session" method="POST">
+            <button type="submit">Pagar</button>
+        </form>
+    </div>
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        const stripe = Stripe('<%= stripePublishableKey %>');
+        // Outras operações com o Stripe aqui
+    </script>
+    
+</body>
+</html>
